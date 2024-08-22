@@ -20,7 +20,7 @@ ul {
   	width: 15%;
   	background-color: #7c96b4;
   	position: fixed;
-  	height: 70%;
+  	height: 100%;
   	overflow: auto;
 }
 
@@ -48,7 +48,7 @@ li a:hover:not(.active) {
 .contenidoimg{
 	margin-left:15%;
 	padding:1px 16px;
-  width: 100%;
+  width:70%;
   height:auto;
 }
 img{
