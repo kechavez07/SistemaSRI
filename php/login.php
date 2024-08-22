@@ -21,7 +21,7 @@ if ($result->num_rows > 0) {
     //echo "id: " . $row["IDUSUARIO"]. " - id rol: " . $row["IDROL"]. " " . $row["NOMBREUSUARIO"]. $row["CONTRASENA"]."<br>";
     if($row["NOMBREUSUARIO"] == $_POST['username'] && $row["CONTRASENA"] == $_POST['password']){
       if($row["IDROL"] == 1){
-        header("Location: ../html/paginaInicioAdministrador.html");
+        header("Location: ../html/paginaInicioAdministrador.php");
       }else if($row["IDROL"] == 2){
         header("Location: ../html/paginaInicioVentas.html");
       }else if($row["IDROL"] == 3){
