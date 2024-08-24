@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     24/8/2024 11:45:21                           */
+/* Created on:     24/8/2024 12:58:18                           */
 /*==============================================================*/
 
 
@@ -23,6 +23,8 @@ drop table if exists ENTREGA;
 drop table if exists FACTURACION;
 
 drop table if exists INVENTARIO;
+
+drop table if exists PAGINAS;
 
 drop table if exists PRODUCTO;
 
@@ -158,6 +160,19 @@ create table INVENTARIO
 );
 
 /*==============================================================*/
+/* Table: PAGINAS                                               */
+/*==============================================================*/
+create table PAGINAS
+(
+   IDPAGINA             int not null auto_increment,
+   IDROL                int,
+   TITLE                varchar(100) not null,
+   DESCRIPTION          varchar(200) not null,
+   LINK                 varchar(250) not null,
+   primary key (IDPAGINA)
+);
+
+/*==============================================================*/
 /* Table: PRODUCTO                                              */
 /*==============================================================*/
 create table PRODUCTO
@@ -192,8 +207,6 @@ create table ROL
 (
    IDROL                int not null auto_increment,
    ROL                  varchar(32) not null,
-   PERMISO              varchar(300) not null,
-   DESCRPCION           text not null,
    primary key (IDROL)
 );
 
@@ -258,6 +271,9 @@ alter table FACTURACION add constraint FK_RECIVE foreign key (IDCIENTE)
 
 alter table INVENTARIO add constraint FK_ESTA_DETRO foreign key (IDPRODUCTO)
       references PRODUCTO (IDPRODUCTO) on delete restrict on update restrict;
+
+alter table PAGINAS add constraint FK_PRESENTA foreign key (IDROL)
+      references ROL (IDROL) on delete restrict on update restrict;
 
 alter table PRODUCTO add constraint FK_PERTENECE foreign key (IDCATEGORI)
       references CATEGORIA (IDCATEGORI) on delete restrict on update restrict;
