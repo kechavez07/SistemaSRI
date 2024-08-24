@@ -3,8 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Administrador</title>
-<link href="../css/estiloAdmin.css" rel="stylesheet" type="text/css">
-<link href="../css/footer.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../../css/estiloAdmin.css">
 </head>
 
 <body>
@@ -20,7 +19,7 @@
         </li>
     </ul>
     <div class="contenido">
-        <h1>Bienvenido/a bodega</h1>
+        <h1>Bienvenido/a a ventas</h1>
 		<div class="contenidoimg"><img src="../img/imgPeluqueria.jpg"  alt=""/></div>
     </div>
 </body>

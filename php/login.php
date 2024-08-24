@@ -13,9 +13,9 @@ if ($result->num_rows > 0) {
       if($row["IDROL"] == 1){
         header("Location: ../paginas/administrador/paginaInicioAdministrador.php");
       }else if($row["IDROL"] == 2){
-        header("Location: ../paginas/paginaInicioVentas.html");
+        header("Location: ../paginas/ventas/paginaInicioVentas.php");
       }else if($row["IDROL"] == 3){
-        header("Location: ../paginas/paginaInicioBodega.html");
+        header("Location: ../paginas/bodega/paginaInicioBodega.php");
       }
     }else{
       echo "Usuario o contraseña incorrectos";

@@ -6,5 +6,9 @@
 </head>
 
 <body>
+<?php include 'menuBodega.html'; ?>
+<div class="contenido">
+        
+    </div>
 </body>
 </html>
