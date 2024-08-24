@@ -1,0 +1,82 @@
+body {
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(240, 10%, 3.9%);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  :root {
+    --background: hsl(0, 0%, 100%);
+    --foreground: hsl(240, 10%, 3.9%);
+    --card: hsl(0, 0%, 100%);
+    --card-foreground: hsl(240, 10%, 3.9%);
+    --primary: hsl(240, 5.9%, 10%);
+    --primary-foreground: hsl(0, 0%, 98%);
+    --secondary: hsl(240, 4.8%, 95.9%);
+    --secondary-foreground: hsl(240, 5.9%, 10%);
+    --border: hsl(240, 5.9%, 90%);
+    --input: hsl(240, 5.9%, 90%);
+    --ring: hsl(240, 5.9%, 10%);
+    --radius: 0.5rem;
+  }
+  
+  .card {
+    background-color: var(--card);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin: 2rem;
+    max-width: 600px;
+  }
+  
+  .card-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-title {
+    font-size: 1.875rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-description {
+    color: var(--secondary-foreground);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .grid-cols-1 {
+    grid-template-columns: 1fr;
+  }
+  
+  .md\:grid-cols-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .input,
+  .textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  
+  .button {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: hsl(240, 5.9%, 15%);
+  }
+  
