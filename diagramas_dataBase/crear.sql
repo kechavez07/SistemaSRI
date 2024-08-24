@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     19/8/2024 14:46:02                           */
+/* Created on:     24/8/2024 11:45:21                           */
 /*==============================================================*/
 
 
@@ -75,9 +75,10 @@ create table CONSUMIBLE
 create table DESCUENTO
 (
    IDDESCUENTO          int not null auto_increment,
-   IDPRODUCTO           int,
+   IDPRODUCTO           int not null,
    NOMBREDES            varchar(32) not null,
    PORSENTAJE           numeric(8,0) not null,
+   ACTIVO               bool not null,
    primary key (IDDESCUENTO)
 );
 
@@ -90,7 +91,7 @@ create table DETALLEENTREGA
    IDPROVEEDOR          int not null,
    IDENTREGA            int not null,
    FECHA                datetime not null,
-   primary key (IDPRODUCTO, IDPROVEEDOR, IDENTREGA)
+   primary key (IDPRODUCTO, IDPROVEEDOR)
 );
 
 /*==============================================================*/
@@ -191,6 +192,8 @@ create table ROL
 (
    IDROL                int not null auto_increment,
    ROL                  varchar(32) not null,
+   PERMISO              varchar(300) not null,
+   DESCRPCION           text not null,
    primary key (IDROL)
 );
 
