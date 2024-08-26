@@ -7,7 +7,7 @@ $(document).ready(function() {
         //console.log(idUsuario);
         alert(idUsuario);
         $.ajax({
-            url: 'php/permisos.php', // Archivo PHP que devolverá los datos
+            url: '../php/permisos.php', // Archivo PHP que devolverá los datos
             type: 'POST', 
             data: {
                 idUsuario: idUsuario
@@ -24,7 +24,7 @@ $(document).ready(function() {
                         const card = document.createElement('div');
                         card.classList.add('card');
                         card.addEventListener('click', () => {
-                            window.location.href = 'administrador/html/'+ item.link;
+                            window.location.href = item.link;
                         });
 
                         card.innerHTML = `

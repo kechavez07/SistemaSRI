@@ -18,7 +18,7 @@ $(document).ready(function() {
                 if(jsonResponse.status === "success") {
                     var idUsuario = jsonResponse.idUsuario;
                     localStorage.setItem("idUsuario", idUsuario);
-                    window.location.href = "paginas/inicio.html";
+                    window.location.href = "paginas/html/inicio.html";
                 } else {
                     alert("Nombre de usuario o contraseña incorrectos");
                 }
