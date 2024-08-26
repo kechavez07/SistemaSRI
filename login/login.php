@@ -1,15 +1,5 @@
 <?php
-
-$servername = "localhost";
-$username = "admin";
-$password = "admin";
-$dbname = "peluqueria";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+include '../configuraciones/php/db.php';
 
 $user = $_POST['username'];
 $pass = $_POST['password'];
@@ -21,11 +11,12 @@ $sql = "SELECT * FROM usuario WHERE CEDULA = '$user' AND CONTRASENA= '$pass'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    
-    echo "success";
+    $row = $result->fetch_assoc();
+    $idUsuario = $row['IDUSUARIO'];
+    // Devolver una respuesta JSON
+    echo json_encode(['status' => 'success', 'idUsuario' => $idUsuario]);
 } else {
-    
-    echo "error";
+    echo json_encode(['status' => 'error']);
 }
 
 $conn->close();

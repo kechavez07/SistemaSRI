@@ -12,9 +12,13 @@ $(document).ready(function() {
                 password: password
             },
             success: function(response) {
-                if(response === "success") {
-                    console.log("si entra no funciona la url")
-                    window.location.href = "paginas/inicio.html";
+                // Parsear la respuesta como JSON
+                var jsonResponse = JSON.parse(response);
+
+                if(jsonResponse.status === "success") {
+                    var idUsuario = jsonResponse.idUsuario;
+                    localStorage.setItem("idUsuario", idUsuario);
+                    window.location.href = "paginas/inicio.php";
                 } else {
                     alert("Nombre de usuario o contraseña incorrectos");
                 }
