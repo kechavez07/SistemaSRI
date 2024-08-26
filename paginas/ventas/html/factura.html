@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+</head>
+
+<body>
+<div>
+  <h1>Factura</h1>
+  <form id="form1" name="form1" method="post">
+    <p>
+      <label for="nombreVendedor">Vendedor:</label>
+      <input name="nombreVendedor" type="text" id="nombreVendedor" readonly="readonly">
+      <label for="fecha">Fecha:</label>
+      <input name="fecha" type="fecha" id="fecha" readonly="readonly">
+    </p>
+    <p>
+      <label for="cedula">Cédula cliente:</label>
+      <input type="text" name="cedula" id="cedula">
+      <label for="nombreCliente">Nombre:</label>
+      <input type="text" name="nombreCliente" id="nombreCliente">
+    </p>
+    <fieldset>
+      <legend><strong>Productos</strong>      </legend>
+      <p>
+        <label for="nombreProducto">Nombre Producto:</label>
+        <input type="text" name="nombreProducto" id="nombreProducto">
+      </p>
+      <p>
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" name="cantidad" id="cantidad">
+      </p>
+      <p>
+        <input type="submit" name="enviarProducto" id="enviarProducto" value="Enviar">
+      </p>
+      <table width="200" border="1">
+        <tbody>
+          <tr>
+            <td>Código</td>
+            <td>Producto</td>
+            <td>Cantidad</td>
+            <td>Precio</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Total a pagar:</p>
+    </fieldset>
+	  <input type="submit" value="Generar factura">
+  </form>
+  <p>&nbsp;</p>
+</div>
+<div>
+        
+    </div>
+</body>
+</html>

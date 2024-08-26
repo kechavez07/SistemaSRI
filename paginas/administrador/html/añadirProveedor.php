@@ -3,11 +3,10 @@
 <head>
 <meta charset="utf-8">
 <link href="../css/estilosAdmin.css" type="text/css" rel="stylesheet">
-<title>Documento sin título</title>
+<title>Registro Productores</title>
 </head>
 
 <body>
-  <?php include '../../prueba.php'; ?>
 <div class="card max-w-2xl mx-auto p-6 sm:p-8 md:p-10">
   <div class="card-header">
     <h1 class="card-title text-3xl font-bold">Ingreso de Proveedores</h1>
@@ -50,5 +49,7 @@
         var idUsuario = localStorage.getItem("idUsuario");
         console.log(idUsuario);
     </script>
+
+ n:paginas/administrador/html/añadirProveedor.html
 </body>
 </html>

@@ -1,37 +1,31 @@
 body {
-    background-color: hsl(0, 0%, 100%);
+    /*background-color: hsl(0, 0%, 100%);*/
     color: hsl(240, 10%, 3.9%);
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: flex-end; /* Alinear todo el contenido a la derecha */
+    align-items: center; /* Centrar verticalmente */
+    height: 100vh; /* Usar la altura total de la ventana */
   }
   
-  :root {
-    --background: hsl(0, 0%, 100%);
-    --foreground: hsl(240, 10%, 3.9%);
-    --card: hsl(0, 0%, 100%);
-    --card-foreground: hsl(240, 10%, 3.9%);
-    --primary: hsl(240, 5.9%, 10%);
-    --primary-foreground: hsl(0, 0%, 98%);
-    --secondary: hsl(240, 4.8%, 95.9%);
-    --secondary-foreground: hsl(240, 5.9%, 10%);
-    --border: hsl(240, 5.9%, 90%);
-    --input: hsl(240, 5.9%, 90%);
-    --ring: hsl(240, 5.9%, 10%);
-    --radius: 0.5rem;
+  .container {
+    margin-right: 20px; /* Ajustar la distancia del contenido a la derecha */
   }
   
   .card {
-    background-color: var(--card);
-    border-radius: var(--radius);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    margin: 2rem;
-    max-width: 600px;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    max-width: 500px;
+    width: 100%;
   }
   
   .card-header {
     margin-bottom: 1.5rem;
+    text-align: left;
   }
   
   .card-title {
@@ -41,42 +35,47 @@ body {
   }
   
   .card-description {
-    color: var(--secondary-foreground);
+    color: hsl(240, 5.9%, 10%);
     font-size: 1rem;
     margin-bottom: 1rem;
   }
   
-  .grid {
-    display: grid;
-    gap: 1.5rem;
+  .form-group {
+    margin-bottom: 1rem;
   }
   
-  .grid-cols-1 {
-    grid-template-columns: 1fr;
+  .form-row {
+    display: flex;
+    gap: 1rem;
   }
   
-  .md\:grid-cols-2 {
-    grid-template-columns: 1fr 1fr;
-  }
-  
-  .input,
-  .textarea {
+  input,
+  textarea {
     width: 100%;
-    padding: 0.75rem;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    padding: 0.5rem;
+    border: 1px solid hsl(240, 5.9%, 90%);
+    border-radius: 0.25rem;
+    font-size: 1rem;
   }
   
-  .button {
-    background-color: var(--primary);
-    color: var(--primary-foreground);
-    padding: 0.75rem 1.5rem;
+  textarea {
+    resize: vertical;
+  }
+  
+  button {
+    background-color: hsl(308, 56%, 85%);   color: hsl(0, 0%, 98%);
+    padding: 25px;
     border: none;
-    border-radius: var(--radius);
-    cursor: pointer;
+    border-radius: 100;
+    font-size: 1rem;
   }
   
-  .button:hover {
+  button:hover {
     background-color: hsl(240, 5.9%, 15%);
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: flex-end; /* Botón alineado a la derecha */
   }
   
