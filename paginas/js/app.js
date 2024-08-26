@@ -20,7 +20,7 @@ $(document).ready(function() {
                 if (data.length > 0) {
                     data.forEach(item => {
                         // Crear la carta
-                        const card = document.createElement('div');
+                        const card = document.createElement('a');
                         card.classList.add('card');
                         card.addEventListener('click', () => {
                             window.location.href = item.link;
@@ -28,7 +28,6 @@ $(document).ready(function() {
 
                         card.innerHTML = `
                             <h3>${item.title}</h3>
-                            <p>${item.description}</p>
                         `;
 
                         // Agregar la carta al contenedor

@@ -7,6 +7,7 @@
 </head>
 
 <body>
+  <?php include '../../prueba.php'; ?>
 <div class="card max-w-2xl mx-auto p-6 sm:p-8 md:p-10">
   <div class="card-header">
     <h1 class="card-title text-3xl font-bold">Ingreso de Proveedores</h1>
@@ -45,5 +46,9 @@
   </div>
     
     </div>
+    <script>
+        var idUsuario = localStorage.getItem("idUsuario");
+        console.log(idUsuario);
+    </script>
 </body>
 </html>
