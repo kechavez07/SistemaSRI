@@ -4,7 +4,8 @@ $(document).ready(function() {
 
     function loadCards() {
         var idUsuario = localStorage.getItem("idUsuario");
-
+        //console.log(idUsuario);
+        alert(idUsuario);
         $.ajax({
             url: 'php/permisos.php', // Archivo PHP que devolverá los datos
             type: 'POST', 
@@ -20,7 +21,7 @@ $(document).ready(function() {
                 if (data.length > 0) {
                     data.forEach(item => {
                         // Crear la carta
-                        const card = document.createElement('a');
+                        const card = document.createElement('div');
                         card.classList.add('card');
                         card.addEventListener('click', () => {
                             window.location.href = item.link;

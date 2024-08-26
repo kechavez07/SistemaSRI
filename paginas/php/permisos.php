@@ -16,14 +16,17 @@ $result = $conn->query($query);
 // Arreglo para almacenar los datos
 $cards = array();
 
-while ($row = $result->fetch_assoc()) {
-    $cards[] = array(
-        'title' => $row['TITLE'],
-        'description' => $row['DESCRIPTION'],
-        'link' => $row['LINK'],
-    );
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $cards[] = array(
+            'title' => $row['TITLE'],
+            'description' => $row['DESCRIPTION'],
+            'link' => $row['LINK'],
+        );
+    }
+} else {
+    echo json_encode(array("error" => "No se encontraron datos."));
 }
-
 
 echo json_encode($cards);
 

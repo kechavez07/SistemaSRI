@@ -12,7 +12,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    $idUsuario = $row['IDUSUARIO'];
+    $idUsuario = $row['IDROL'];
     // Devolver una respuesta JSON
     echo json_encode(['status' => 'success', 'idUsuario' => $idUsuario]);
 } else {
