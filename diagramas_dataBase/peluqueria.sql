@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 24-08-2024 a las 21:47:51
+-- Tiempo de generación: 26-08-2024 a las 01:27:32
 -- Versión del servidor: 8.0.17
 -- Versión de PHP: 7.3.10
 
@@ -56,22 +56,9 @@ CREATE TABLE `cliente` (
 
 CREATE TABLE `consumible` (
   `IDCONSUMIBLES` int(11) NOT NULL,
+  `IDSERVICIOS` int(11) NOT NULL,
   `NOMBREPRODUCTO` varchar(32) NOT NULL,
   `DESCRIPCION` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `descuento`
---
-
-CREATE TABLE `descuento` (
-  `IDDESCUENTO` int(11) NOT NULL,
-  `IDPRODUCTO` int(11) NOT NULL,
-  `NOMBREDES` varchar(32) NOT NULL,
-  `PORSENTAJE` decimal(8,0) NOT NULL,
-  `ACTIVO` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -81,26 +68,11 @@ CREATE TABLE `descuento` (
 --
 
 CREATE TABLE `detalleentrega` (
-  `IDPRODUCTO` int(11) NOT NULL,
-  `IDPROVEEDOR` int(11) NOT NULL,
+  `IDDETALLEENTREGA` char(10) NOT NULL,
   `IDENTREGA` int(11) NOT NULL,
-  `FECHA` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `detallefactura`
---
-
-CREATE TABLE `detallefactura` (
-  `IDDETALLFACTURA` int(11) NOT NULL,
-  `IDFACTURA` int(11) DEFAULT NULL,
-  `IDPRODUCTO` int(11) DEFAULT NULL,
-  `IDSERVICIOS` int(11) DEFAULT NULL,
-  `IDUSUARIO` int(11) DEFAULT NULL,
-  `CANTIDAD` decimal(8,0) DEFAULT NULL,
-  `PRECIOUNITARIO` decimal(10,2) NOT NULL
+  `IDPRODUCTO` int(11) NOT NULL,
+  `CANTIDADENTREGADA` char(10) NOT NULL,
+  `PRECIOUNITARIO` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -110,10 +82,13 @@ CREATE TABLE `detallefactura` (
 --
 
 CREATE TABLE `detalleventa` (
-  `IDPRODUCTO` int(11) NOT NULL,
+  `IDDETALLEVENTA` int(11) NOT NULL,
   `IDSERVICIOS` int(11) NOT NULL,
-  `IDUSUARIO` int(11) NOT NULL,
-  `FECHAHORA` datetime NOT NULL
+  `IDPRODUCTO` int(11) NOT NULL,
+  `IDFACTURA` int(11) NOT NULL,
+  `CANTIDAD_V_PRODUCTO` int(11) NOT NULL,
+  `CANTIDAD_V_SERVISOS` int(11) NOT NULL,
+  `DESCUENTO` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -124,22 +99,28 @@ CREATE TABLE `detalleventa` (
 
 CREATE TABLE `entrega` (
   `IDENTREGA` int(11) NOT NULL,
-  `FECHAHORA` datetime NOT NULL
+  `IDPROVEEDOR` int(11) NOT NULL,
+  `IDUSUARIO` int(11) NOT NULL,
+  `FECHAENTREGA` datetime NOT NULL,
+  `REPARTIDOR` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `facturacion`
+-- Estructura de tabla para la tabla `factura`
 --
 
-CREATE TABLE `facturacion` (
+CREATE TABLE `factura` (
   `IDFACTURA` int(11) NOT NULL,
   `IDCIENTE` int(11) NOT NULL,
+  `CODIGOFACTURACION` varchar(32) NOT NULL,
+  `IDUSUARIO` int(11) NOT NULL,
   `FECHA` date NOT NULL,
   `PAGO` decimal(10,2) NOT NULL,
   `SUBTOTAL` decimal(10,2) NOT NULL,
-  `IMPUESTO` decimal(10,2) NOT NULL
+  `IMPUESTO` decimal(10,2) NOT NULL,
+  `ESTADO` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'activo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -150,9 +131,10 @@ CREATE TABLE `facturacion` (
 
 CREATE TABLE `inventario` (
   `IDINVENTARIO` int(11) NOT NULL,
+  `ESTADOPRODUCTO` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'activo',
   `IDPRODUCTO` int(11) NOT NULL,
-  `STOCKMINIMO` int(11) NOT NULL,
-  `ESTADOPRODUCTO` tinyint(1) NOT NULL
+  `ULTIMAACTUALIZACION` datetime DEFAULT NULL,
+  `CANTIDAD` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -177,11 +159,11 @@ CREATE TABLE `paginas` (
 
 CREATE TABLE `producto` (
   `IDPRODUCTO` int(11) NOT NULL,
-  `IDCATEGORI` int(11) NOT NULL,
+  `CODIGO` varchar(32) DEFAULT NULL,
   `NOMBREPRODUCTO` varchar(32) NOT NULL,
+  `IDCATEGORI` int(11) NOT NULL,
   `DESCRIPCION` text NOT NULL,
-  `PRECIO` decimal(10,2) NOT NULL,
-  `STOCK` int(11) NOT NULL
+  `PRECIO` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -192,11 +174,11 @@ CREATE TABLE `producto` (
 
 CREATE TABLE `proveedor` (
   `IDPROVEEDOR` int(11) NOT NULL,
-  `NOMBRE` varchar(32) NOT NULL,
-  `APELLIDO` varchar(32) NOT NULL,
-  `CI_RUC` varchar(12) NOT NULL,
   `NOMBREEMPRESA` varchar(100) NOT NULL,
-  `NOMBREPRODUCTO` varchar(32) NOT NULL
+  `DIRECCION` varchar(250) NOT NULL,
+  `TELEFONO` varchar(32) NOT NULL,
+  `EMAIL` varchar(100) NOT NULL,
+  `SERVICIOS` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -217,7 +199,7 @@ CREATE TABLE `rol` (
 INSERT INTO `rol` (`IDROL`, `ROL`) VALUES
 (1, 'Administrador'),
 (2, 'Vendedor'),
-(3, 'Bodegero');
+(3, 'Bodeguero');
 
 -- --------------------------------------------------------
 
@@ -227,7 +209,6 @@ INSERT INTO `rol` (`IDROL`, `ROL`) VALUES
 
 CREATE TABLE `servicios` (
   `IDSERVICIOS` int(11) NOT NULL,
-  `IDCONSUMIBLES` int(11) NOT NULL,
   `NOMBRESERVICIO` varchar(100) NOT NULL,
   `DESCRIPCION` text NOT NULL,
   `PRECIO` decimal(10,2) NOT NULL
@@ -247,7 +228,7 @@ CREATE TABLE `usuario` (
   `APELLIDOU` varchar(32) NOT NULL,
   `CONTRASENA` varchar(32) NOT NULL,
   `CORREO` varchar(100) NOT NULL,
-  `ESTADO` tinyint(1) NOT NULL
+  `ESTADO` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'activo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -255,9 +236,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`IDUSUARIO`, `IDROL`, `CEDULA`, `NOMBREU`, `APELLIDOU`, `CONTRASENA`, `CORREO`, `ESTADO`) VALUES
-(1, 1, '1234567890', 'Admin', 'AdminApellido', 'admin123', 'admin@example.com', 1),
-(2, 2, '0987654321', 'Vendedor', 'VendedorApellido', 'vendedor123', 'vendedor@example.com', 1),
-(3, 3, '1122334455', 'Bodeguero', 'BodegueroApellido', 'bodeguero123', 'bodeguero@example.com', 1);
+(5, 1, '1234567890', 'Juan', 'Pérez', 'contrasena123', 'juan.perez@dominio.com', 'Activo'),
+(6, 2, '0987654321', 'Ana', 'García', 'contrasena456', 'ana.garcia@dominio.com', 'Activo'),
+(7, 3, '1122334455', 'Carlos', 'López', 'contrasena789', 'carlos.lopez@dominio.com', 'Activo');
 
 --
 -- Índices para tablas volcadas
@@ -279,51 +260,41 @@ ALTER TABLE `cliente`
 -- Indices de la tabla `consumible`
 --
 ALTER TABLE `consumible`
-  ADD PRIMARY KEY (`IDCONSUMIBLES`);
-
---
--- Indices de la tabla `descuento`
---
-ALTER TABLE `descuento`
-  ADD PRIMARY KEY (`IDDESCUENTO`),
-  ADD KEY `FK_SE_APLICA` (`IDPRODUCTO`);
+  ADD PRIMARY KEY (`IDCONSUMIBLES`),
+  ADD KEY `FK_CONSUME` (`IDSERVICIOS`);
 
 --
 -- Indices de la tabla `detalleentrega`
 --
 ALTER TABLE `detalleentrega`
-  ADD PRIMARY KEY (`IDPRODUCTO`,`IDPROVEEDOR`),
+  ADD PRIMARY KEY (`IDDETALLEENTREGA`),
   ADD KEY `FK_ENTREGA` (`IDENTREGA`),
-  ADD KEY `FK_RELATIONSHIP_7` (`IDPROVEEDOR`);
-
---
--- Indices de la tabla `detallefactura`
---
-ALTER TABLE `detallefactura`
-  ADD PRIMARY KEY (`IDDETALLFACTURA`),
-  ADD KEY `FK_FORMA` (`IDFACTURA`),
-  ADD KEY `FK_RELACIONA` (`IDPRODUCTO`,`IDSERVICIOS`,`IDUSUARIO`);
+  ADD KEY `FK_REGISTRA` (`IDPRODUCTO`);
 
 --
 -- Indices de la tabla `detalleventa`
 --
 ALTER TABLE `detalleventa`
-  ADD PRIMARY KEY (`IDPRODUCTO`,`IDSERVICIOS`,`IDUSUARIO`),
-  ADD KEY `FK_DETALLE3` (`IDSERVICIOS`),
-  ADD KEY `FK_DETALLE4` (`IDUSUARIO`);
+  ADD PRIMARY KEY (`IDDETALLEVENTA`),
+  ADD KEY `FK_FACTURA` (`IDFACTURA`),
+  ADD KEY `FK_SE_DIO` (`IDSERVICIOS`),
+  ADD KEY `FK_VENDIO` (`IDPRODUCTO`);
 
 --
 -- Indices de la tabla `entrega`
 --
 ALTER TABLE `entrega`
-  ADD PRIMARY KEY (`IDENTREGA`);
+  ADD PRIMARY KEY (`IDENTREGA`),
+  ADD KEY `FK_REALIZA` (`IDPROVEEDOR`),
+  ADD KEY `FK_RESIBE` (`IDUSUARIO`);
 
 --
--- Indices de la tabla `facturacion`
+-- Indices de la tabla `factura`
 --
-ALTER TABLE `facturacion`
+ALTER TABLE `factura`
   ADD PRIMARY KEY (`IDFACTURA`),
-  ADD KEY `FK_RECIVE` (`IDCIENTE`);
+  ADD KEY `FK_RECIVE` (`IDCIENTE`),
+  ADD KEY `FK_VENDE` (`IDUSUARIO`);
 
 --
 -- Indices de la tabla `inventario`
@@ -362,8 +333,7 @@ ALTER TABLE `rol`
 -- Indices de la tabla `servicios`
 --
 ALTER TABLE `servicios`
-  ADD PRIMARY KEY (`IDSERVICIOS`),
-  ADD KEY `FK_CONSUME` (`IDCONSUMIBLES`);
+  ADD PRIMARY KEY (`IDSERVICIOS`);
 
 --
 -- Indices de la tabla `usuario`
@@ -395,16 +365,10 @@ ALTER TABLE `consumible`
   MODIFY `IDCONSUMIBLES` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `descuento`
+-- AUTO_INCREMENT de la tabla `detalleventa`
 --
-ALTER TABLE `descuento`
-  MODIFY `IDDESCUENTO` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `detallefactura`
---
-ALTER TABLE `detallefactura`
-  MODIFY `IDDETALLFACTURA` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `detalleventa`
+  MODIFY `IDDETALLEVENTA` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `entrega`
@@ -413,9 +377,9 @@ ALTER TABLE `entrega`
   MODIFY `IDENTREGA` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `facturacion`
+-- AUTO_INCREMENT de la tabla `factura`
 --
-ALTER TABLE `facturacion`
+ALTER TABLE `factura`
   MODIFY `IDFACTURA` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -458,46 +422,46 @@ ALTER TABLE `servicios`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `IDUSUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `IDUSUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `descuento`
+-- Filtros para la tabla `consumible`
 --
-ALTER TABLE `descuento`
-  ADD CONSTRAINT `FK_SE_APLICA` FOREIGN KEY (`IDPRODUCTO`) REFERENCES `producto` (`IDPRODUCTO`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `consumible`
+  ADD CONSTRAINT `FK_CONSUME` FOREIGN KEY (`IDSERVICIOS`) REFERENCES `servicios` (`IDSERVICIOS`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Filtros para la tabla `detalleentrega`
 --
 ALTER TABLE `detalleentrega`
-  ADD CONSTRAINT `FK_DEJA` FOREIGN KEY (`IDPRODUCTO`) REFERENCES `producto` (`IDPRODUCTO`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `FK_ENTREGA` FOREIGN KEY (`IDENTREGA`) REFERENCES `entrega` (`IDENTREGA`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `FK_RELATIONSHIP_7` FOREIGN KEY (`IDPROVEEDOR`) REFERENCES `proveedor` (`IDPROVEEDOR`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Filtros para la tabla `detallefactura`
---
-ALTER TABLE `detallefactura`
-  ADD CONSTRAINT `FK_FORMA` FOREIGN KEY (`IDFACTURA`) REFERENCES `facturacion` (`IDFACTURA`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `FK_RELACIONA` FOREIGN KEY (`IDPRODUCTO`,`IDSERVICIOS`,`IDUSUARIO`) REFERENCES `detalleventa` (`IDPRODUCTO`, `IDSERVICIOS`, `IDUSUARIO`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `FK_REGISTRA` FOREIGN KEY (`IDPRODUCTO`) REFERENCES `producto` (`IDPRODUCTO`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Filtros para la tabla `detalleventa`
 --
 ALTER TABLE `detalleventa`
-  ADD CONSTRAINT `FK_DETALLE2` FOREIGN KEY (`IDPRODUCTO`) REFERENCES `producto` (`IDPRODUCTO`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `FK_DETALLE3` FOREIGN KEY (`IDSERVICIOS`) REFERENCES `servicios` (`IDSERVICIOS`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `FK_DETALLE4` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`IDUSUARIO`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `FK_FACTURA` FOREIGN KEY (`IDFACTURA`) REFERENCES `factura` (`IDFACTURA`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `FK_SE_DIO` FOREIGN KEY (`IDSERVICIOS`) REFERENCES `servicios` (`IDSERVICIOS`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `FK_VENDIO` FOREIGN KEY (`IDPRODUCTO`) REFERENCES `producto` (`IDPRODUCTO`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
--- Filtros para la tabla `facturacion`
+-- Filtros para la tabla `entrega`
 --
-ALTER TABLE `facturacion`
-  ADD CONSTRAINT `FK_RECIVE` FOREIGN KEY (`IDCIENTE`) REFERENCES `cliente` (`IDCIENTE`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `entrega`
+  ADD CONSTRAINT `FK_REALIZA` FOREIGN KEY (`IDPROVEEDOR`) REFERENCES `proveedor` (`IDPROVEEDOR`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `FK_RESIBE` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`IDUSUARIO`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Filtros para la tabla `factura`
+--
+ALTER TABLE `factura`
+  ADD CONSTRAINT `FK_RECIVE` FOREIGN KEY (`IDCIENTE`) REFERENCES `cliente` (`IDCIENTE`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `FK_VENDE` FOREIGN KEY (`IDUSUARIO`) REFERENCES `usuario` (`IDUSUARIO`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Filtros para la tabla `inventario`
@@ -516,12 +480,6 @@ ALTER TABLE `paginas`
 --
 ALTER TABLE `producto`
   ADD CONSTRAINT `FK_PERTENECE` FOREIGN KEY (`IDCATEGORI`) REFERENCES `categoria` (`IDCATEGORI`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Filtros para la tabla `servicios`
---
-ALTER TABLE `servicios`
-  ADD CONSTRAINT `FK_CONSUME` FOREIGN KEY (`IDCONSUMIBLES`) REFERENCES `consumible` (`IDCONSUMIBLES`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Filtros para la tabla `usuario`
