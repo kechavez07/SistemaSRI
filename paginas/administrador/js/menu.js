@@ -1,13 +1,12 @@
 $(document).ready(function() {
     // Cargar las cartas cuando la página se haya cargado
-    loadCards();
+    loadMenu();
 
-    function loadCards() {
+    function loadMenu() {
         var idUsuario = localStorage.getItem("idUsuario");
-        //console.log(idUsuario);
-        alert(idUsuario);
+
         $.ajax({
-            url: 'php/permisos.php', // Archivo PHP que devolverá los datos
+            url: '../php/menu.php', 
             type: 'POST', 
             data: {
                 idUsuario: idUsuario
@@ -21,10 +20,10 @@ $(document).ready(function() {
                 if (data.length > 0) {
                     data.forEach(item => {
                         // Crear la carta
-                        const card = document.createElement('div');
+                        const card = document.createElement('a');
                         card.classList.add('card');
                         card.addEventListener('click', () => {
-                            window.location.href = 'administrador/html/'+ item.link;
+                            window.location.href = item.link;
                         });
 
                         card.innerHTML = `
