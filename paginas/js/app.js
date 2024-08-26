@@ -4,8 +4,6 @@ $(document).ready(function() {
 
     function loadCards() {
         var idUsuario = localStorage.getItem("idUsuario");
-        //console.log(idUsuario);
-        alert(idUsuario);
         $.ajax({
             url: '../php/permisos.php', // Archivo PHP que devolverá los datos
             type: 'POST', 
