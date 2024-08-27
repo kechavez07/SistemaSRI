@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 26-08-2024 a las 01:27:32
+-- Tiempo de generación: 27-08-2024 a las 21:24:15
 -- Versión del servidor: 8.0.17
 -- Versión de PHP: 7.3.10
 
@@ -32,6 +32,16 @@ CREATE TABLE `categoria` (
   `IDCATEGORI` int(11) NOT NULL,
   `CATEGORIA` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`IDCATEGORI`, `CATEGORIA`) VALUES
+(1, 'cat1'),
+(2, 'cat2'),
+(3, 'cat3'),
+(4, 'cat4');
 
 -- --------------------------------------------------------
 
@@ -151,6 +161,27 @@ CREATE TABLE `paginas` (
   `LINK` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Volcado de datos para la tabla `paginas`
+--
+
+INSERT INTO `paginas` (`IDPAGINA`, `IDROL`, `TITLE`, `DESCRIPTION`, `LINK`) VALUES
+(1, 1, 'Añadir Proveedor', 'adsfjhdfgdsf', 'añadirProveedor.html'),
+(4, 2, 'Facturacaion', 'sfdgergfdgfdgfd', 'factura.html'),
+(5, 1, 'Añadir nuevo Vendedor', 'se añase un nuevo Vendedor', 'anadirUV.html'),
+(6, 3, 'Registro de entrega', 'se registra todos los productos que se llegen a dejar los proveedores', 'compras.html'),
+(7, 1, 'inicio', 'pagina de inicio', 'inicio.html'),
+(8, 1, 'INVENTARIO', 'sadfadsf', 'Iinventario.html'),
+(9, 1, 'Reporte de Compras', 'se da un reporte de compras', 'reporteCompras.html'),
+(10, 1, 'ModificarUsuario', 'dsds', 'usuariosModificar.html'),
+(11, 1, 'Reporte de Venta', 'fdsg', 'reporteVentas.html'),
+(12, 2, 'inicio', 'pagina de inicio', 'inicio.html'),
+(13, 3, 'inicio', 'pagina de inicio', 'inicio.html'),
+(14, 1, 'Añadir Producto', 'adsfjhdfgdsf', 'añadirProducto.html'),
+(15, 3, 'SALIR', 'SALE DEL SISTEMA', '../../'),
+(16, 1, 'SALIR', 'SALE DEL SISTEMA', '../../'),
+(17, 2, 'SALIR', 'SALE DEL SISTEMA', '../../');
+
 -- --------------------------------------------------------
 
 --
@@ -166,6 +197,13 @@ CREATE TABLE `producto` (
   `PRECIO` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`IDPRODUCTO`, `CODIGO`, `NOMBREPRODUCTO`, `IDCATEGORI`, `DESCRIPCION`, `PRECIO`) VALUES
+(1, '1234668', 'tu cola', 1, 'adios', '2.14');
+
 -- --------------------------------------------------------
 
 --
@@ -178,8 +216,18 @@ CREATE TABLE `proveedor` (
   `DIRECCION` varchar(250) NOT NULL,
   `TELEFONO` varchar(32) NOT NULL,
   `EMAIL` varchar(100) NOT NULL,
-  `SERVICIOS` varchar(100) NOT NULL
+  `SERVICIOS` varchar(100) NOT NULL,
+  `estado` varchar(32) NOT NULL DEFAULT 'activo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `proveedor`
+--
+
+INSERT INTO `proveedor` (`IDPROVEEDOR`, `NOMBREEMPRESA`, `DIRECCION`, `TELEFONO`, `EMAIL`, `SERVICIOS`, `estado`) VALUES
+(1, 'kañdljkndfovn', 'Distrito Metropolitano De Quito - Pintag\r\nDepartamento', '+593 963366378', 'kleberenriqueos@gmail.com', 'dashbgfhfdshgf', 'activo'),
+(2, 'kleber', 'Distrito Metropolitano De Quito - Pintag\r\nDepartamento', '+593 963366378', 'kleberenriqueos@gmail.com', 'adsgfghkjfgfdbbvf', 'activo'),
+(3, 'enrique', 'Distrito Metropolitano De Quito - Pintag\r\nDepartamento', '+593 963366378', 'verooscullo2013@hotmail.com', 'adsfds', 'activo');
 
 -- --------------------------------------------------------
 
@@ -238,7 +286,10 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`IDUSUARIO`, `IDROL`, `CEDULA`, `NOMBREU`, `APELLIDOU`, `CONTRASENA`, `CORREO`, `ESTADO`) VALUES
 (5, 1, '1234567890', 'Juan', 'Pérez', 'contrasena123', 'juan.perez@dominio.com', 'Activo'),
 (6, 2, '0987654321', 'Ana', 'García', 'contrasena456', 'ana.garcia@dominio.com', 'Activo'),
-(7, 3, '1122334455', 'Carlos', 'López', 'contrasena789', 'carlos.lopez@dominio.com', 'Activo');
+(7, 3, '1122334455', 'Carlos', 'López', 'contrasena789', 'carlos.lopez@dominio.com', 'Activo'),
+(8, 2, '', '', '', '', '', 'activo'),
+(9, 2, '', '', '', '', '', 'activo'),
+(10, 2, '', '', '', '', '', 'activo');
 
 --
 -- Índices para tablas volcadas
@@ -350,7 +401,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `IDCATEGORI` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDCATEGORI` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
@@ -392,19 +443,19 @@ ALTER TABLE `inventario`
 -- AUTO_INCREMENT de la tabla `paginas`
 --
 ALTER TABLE `paginas`
-  MODIFY `IDPAGINA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDPAGINA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `IDPRODUCTO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDPRODUCTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `IDPROVEEDOR` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDPROVEEDOR` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -422,7 +473,7 @@ ALTER TABLE `servicios`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `IDUSUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `IDUSUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restricciones para tablas volcadas

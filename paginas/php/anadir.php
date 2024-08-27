@@ -74,8 +74,9 @@ if(isset($_POST['anadirCompras'])) {
     if (!mysqli_query($conn, $query)) {
         echo "Error en la grabación: " . mysqli_error($conn);
     } else {
-        echo "<script>alert('Proveedor registrado con éxito');</script>";
-        echo "<script>window.location.href = '../html/añadirProveedor.html';</script>";
+        echo "<script>alert('Detalle registrado con éxito');</script>";
+        echo "<script>window.location.href = '../html/compras.html';</script>";
     }
 }
+
 ?>
