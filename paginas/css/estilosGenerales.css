@@ -50,8 +50,26 @@ input[type="button"]{
     border-radius: 5px;
     font-size: 16px;
 }
-#busCategoria{
+#busCategoria,#enviarProducto{
     width: 20%;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+#bodeguero,#nombreVendedor{
+    margin-right: 15%;
+    width: 25%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+#fechaHoraActual,#fecha{
+    margin-right: 15%;
+    width: 25%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -103,4 +121,30 @@ button:hover {
     .content {
         flex: 1 0 auto;
     }
+}
+/* Estilos para tablas */
+table {
+    width: 100%; /* Asegura que la tabla ocupe el ancho completo disponible */
+    border-collapse: collapse; /* Elimina el espacio entre los bordes de las celdas */
+    margin-bottom: 20px; /* Espacio debajo de la tabla */
+}
+
+th, td {
+    padding: 10px; /* Espacio dentro de las celdas */
+    text-align: left; /* Alineación del texto a la izquierda */
+    border-bottom: 1px solid #ddd; /* Borde inferior de las celdas */
+}
+
+th {
+    background-color: #F7D1E8; /* Color de fondo para las cabeceras de la tabla */
+    color: #B25068; /* Color del texto en las cabeceras */
+    font-weight: bold; /* Negrita en las cabeceras */
+}
+
+tr:nth-child(even) {
+    background-color: #F9F9F9; /* Color de fondo alternante para filas pares */
+}
+
+tr:hover {
+    background-color: #FFE4E1; /* Color de fondo al pasar el ratón sobre las filas */
 }

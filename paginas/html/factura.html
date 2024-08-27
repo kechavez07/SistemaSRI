@@ -1,31 +1,39 @@
 <!doctype html>
 <html>
 <head>
+  <link href="../css/estilosGenerales.css" type="text/css" rel="stylesheet">
 <meta charset="utf-8">
-<title>Documento sin título</title>
+<title>Factura</title>
 </head>
 
 <body>
-  <nav class="card-container" id="card-container">
-    <!-- Las cartas se generarán dinámicamente aquí -->
-</nav>
-<div>
-  <h1>Factura</h1>
+  <div class="container">
+    <nav class="sidebar">
+      <p>&nbsp;</p>
+    </nav> 
+    <main class="content">
+      <section class="form-section">
+  <h1 class="center">Factura</h1>
+  <p>&nbsp;</p>
   <form id="form1" name="form1" method="post">
     <p>
       <label for="nombreVendedor">Vendedor:</label>
       <input name="nombreVendedor" type="text" id="nombreVendedor" readonly="readonly">
       <label for="fecha">Fecha:</label>
-      <input name="fecha" type="fecha" id="fecha" readonly="readonly">
+      <input name="fecha" type="date" id="fecha" readonly="readonly">
     </p>
     <p>
+      <h3>Datos del Cliente</h3>
+      <p>&nbsp;</p>
       <label for="cedula">Cédula cliente:</label>
       <input type="text" name="cedula" id="cedula">
       <label for="nombreCliente">Nombre:</label>
       <input type="text" name="nombreCliente" id="nombreCliente">
+      <label for="apellidoCliente">Apellido:</label>
+      <input type="text" name="apellidoCliente" id="apellidoCliente">
     </p>
-    <fieldset>
-      <legend><strong>Productos</strong>      </legend>
+      <h3><strong>Productos</strong></h3>
+      <p>&nbsp;</p>
       <p>
         <label for="nombreProducto">Nombre Producto:</label>
         <input type="text" name="nombreProducto" id="nombreProducto">
@@ -48,15 +56,11 @@
         </tbody>
       </table>
       <p>Total a pagar:</p>
-    </fieldset>
 	  <input type="submit" value="Generar factura">
   </form>
   <p>&nbsp;</p>
+</section>
+</main>  
 </div>
-<div>
-        
-    </div>
-    <script src="../../configuraciones/jquery-1.12.4.js"></script>
-    <script src="../js/app.js"></script>
 </body>
 </html>
