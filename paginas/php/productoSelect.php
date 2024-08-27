@@ -10,12 +10,15 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         $categories[] = array(
             'id' => $row['IDCATEGORI'],
-            'categoria' => $row['CATEGORIA'],);
+            'categoria' => $row['CATEGORIA'],
+        );
     }
+}else {
+    echo json_encode(array("error" => "No se encontraron datos."));
 }
-
-$conn->close();
 
 // Devolver datos en formato JSON
 echo json_encode($categories);
+
+$conn->close();
 ?>

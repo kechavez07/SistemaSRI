@@ -12,10 +12,7 @@ $(document).ready(function() {
             },
             success: function(response) {
                 
-                var data = JSON.parse(response);
-                console.log(typeof data );
-                console.log(data);
-                // Verificar si la respuesta es válida y contiene datos
+                var data = JSON.parse(response); 
                 if (data.length > 0) {
                     data.forEach(item => {
                         // Crear la carta
@@ -43,3 +40,8 @@ $(document).ready(function() {
         });
     }
 });
+
+
+
+
+    
