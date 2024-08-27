@@ -8,7 +8,9 @@ $categories = array();
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        $categories[] = $row;
+        $categories[] = array(
+            'id' => $row['IDCATEGORI'],
+            'categoria' => $row['CATEGORIA'],);
     }
 }
 

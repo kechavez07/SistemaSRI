@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 data.forEach(category => {
                     const option = document.createElement('option');
                     option.value = category.IDCATEGORI; // Valor que se enviará cuando se seleccione la opción
-                    option.textContent = category.NOMBRECATEGORIA; // Nombre que se mostrará en el select
+                    option.textContent = category.CATEGORIA; // Nombre que se mostrará en el select
                     categoriaSelect.appendChild(option);
                 });
             })
