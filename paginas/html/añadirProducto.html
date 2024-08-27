@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <link href="../css/estilosGenerales.css" type="text/css" rel="stylesheet">
+<meta charset="utf-8">
+<title>Documento sin título</title>
+</head>
+
+<body>
+  <div class="container">
+		<nav class="sidebar">
+		  <p>&nbsp;</p>
+		</nav> 
+		<main class="content">
+		  <section class="form-section">
+  <h1>Ingreso Productos</h1>
+  <form id="form1" name="form1" method="post">
+    <p>
+      <label for="codigo">Código:</label>
+      <input type="text" name="codigo" id="codigo">
+    </p>
+    <p>
+      <label for="nombreprod">Producto:</label>
+      <input type="text" name="nombreprod" id="nombreprod">
+    </p>
+    <p>
+      <label for="categoria">Categoría:</label>
+      <select name="categoria" id="categoria">
+      </select>
+      <input type="text" name="busCategoria" id="busCategoria">
+      <input type="button" name="button" id="button" value="Buscar">
+    </p>
+    <p>
+      <label for="descripcion">Descripción:</label>
+      <textarea name="descripcion" id="descripcion"></textarea>
+    </p>
+    <p>
+      <label for="cantidad">Cantidad:</label>
+      <input type="number" name="cantidad" id="cantidad">
+    </p>
+    <p>
+      <input type="submit" name="submit" id="submit" value="Enviar">
+      <input type="reset" name="reset" id="reset" value="Restablecer">
+    </p>
+  </form>
+</section>
+</main>
+</div>
+</body>
+</html>

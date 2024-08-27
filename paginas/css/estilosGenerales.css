@@ -1,0 +1,89 @@
+/* Reset básico para márgenes y relleno */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white; /* Fondo blanco para la página */
+    color: #333; /* Color de texto base */
+}
+
+.container {
+    display: flex;
+    min-height: 100vh; /* Para que el contenedor cubra toda la altura de la pantalla */
+    flex-direction: row; /* Asegura que los elementos estén en fila */
+}
+
+.sidebar {
+    flex: 0 0 250px; /* Ancho fijo para la barra lateral */
+    background-color: #E8A4B8; /* Color de fondo rosado más fuerte */
+    padding: 20px;
+    color: white; /* Letra blanca en la barra de navegación */
+}
+
+.content {
+    flex: 1; /* Toma el resto del espacio disponible */
+    padding: 20px;
+    background-color: white; /* Fondo blanco para el contenido */
+}
+
+.form-section {
+    background-color: white; /* Fondo blanco para la sección del formulario */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.center{
+    text-align: center;
+}
+.form-section h2 {
+    margin-bottom: 20px;
+    color: #B25068; /* Color de encabezado rosado */
+}
+input[type="reset"],
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="submit"],
+textarea,
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+input[type="reset"],
+input[type="submit"],
+button {
+    background-color: #F28FB6; /* Botón con color rosado claro */
+    color: white; /* Texto blanco en el botón */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+input[type="reset"]:hover,
+input[type="submit"]:hover,
+button:hover {
+    background-color: #B25068; /* Color rosado más oscuro al pasar el ratón */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Cambia la dirección del flexbox a columna en pantallas más pequeñas */
+    }
+    
+    .sidebar {
+        flex: 0 0 auto;
+        width: 100%; /* Barra lateral ocupa todo el ancho */
+    }
+    
+    .content {
+        flex: 1 0 auto;
+    }
+}

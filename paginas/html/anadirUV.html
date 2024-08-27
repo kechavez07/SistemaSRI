@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/estilosGenerales.css" type="text/css" rel="stylesheet">
     <title>Registrar</title>
 </head>
 <body>
-    <div>
+    <div class="container">
+		<nav class="sidebar">
+		  <p>&nbsp;</p>
+		</nav> 
+		<main class="content">
+		  <section class="form-section">
         <form method="post"  action="php/anadir.php" >
             <label for="nombres">Nombres:</label>
             <input type="text" id="nombres" name="nombres" ><br><br>
@@ -29,6 +35,8 @@
             <p>Se agrego correctamente el vendedor.</p>
             <button id="closeDialogBtn">Cerrar</button>
         </dialog>
+    </section>
+</main>
     </div>
     <script src="script.js"></script>
 </body>
