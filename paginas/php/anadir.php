@@ -42,8 +42,8 @@ if(isset($_POST['anadirProvedor'])) {
         echo "<script>window.location.href = '../html/añadirProveedor.html';</script>";
     }
 }
+//Añadir Producto
 if(isset($_POST['anadirProducto'])) {
-    //echo "si entra al metodo anadir"; //si existe save, guardar en cada variable los datos ingresados por el usuario
     $codigo=$_POST['codigo'];  //guardo cada dato ingresado
     $nombreprod=$_POST['nombreprod'];
     $categoria=$_POST['categoria'];   
@@ -51,15 +51,15 @@ if(isset($_POST['anadirProducto'])) {
     $cantidad=$_POST['cantidad'];
     $precio=$_POST['precio'];
 
-    $query="INSERT INTO producto (IDPRODUCTO,CODIGO,NOMBREPRODUCTO,IDCATEGORIA,DESCRIPCION,PRECIO) VALUES (NULL,'$codigo','$nombreprod', '$categoria','$descripcion','$precio')"; //guardo cada variable en la tabla usuario de mi base de datos
+    $query="INSERT INTO producto (IDPRODUCTO,CODIGO,NOMBREPRODUCTO,IDCATEGORI,DESCRIPCION,PRECIO) VALUES (NULL,'$codigo','$nombreprod', '$categoria','$descripcion','$precio')"; //guardo cada variable en la tabla usuario de mi base de datos
     $result=mysqli_query($conn, $query); 
 
     if (!$result) { //si result no es cierto dar un mensaje de fail
         die("Fallo la grabacion");
     } 
     else {
-        echo "<script>alert('Proveedor registrado con éxito');</script>";
-        echo "<script>window.location.href = '../html/añadirProveedor.html';</script>";
+        echo "<script>alert('Producto registrado con éxito');</script>";
+        echo "<script>window.location.href = '../html/añadirProducto.html';</script>";
     }
 }
 ?>
