@@ -7,14 +7,16 @@
 </head>
 
 <body>
-  <div class="container">
-    <nav class="sidebar">
-      <p>&nbsp;</p>
-    </nav> 
-    <main class="content">
-      <section class="form-section">
-        <h1 class="center">Registro de Proveedores</h1>
-        <form id="form1" name="form1" method="post" action="../php/anadir.php">
+  <div class="menu" id="menu"> 
+  <!-- menu -->
+</div>
+  <div class="card">
+    <div class="card-header">
+      <h1 class="card-title">Ingreso de Proveedores</h1>
+    </div>
+    <div class="card-content">
+      <form id="form1" name="form1" method="post" action="#">
+        <div class="form-group">
           <label for="nombreEmpresa">Nombre Empresa:</label>
           <input type="text" name="nombreEmpresa" id="nombreEmpresa" placeholder="Nombre de la empresa: Jonson's Baby">    
           <label for="direccion">Dirección:</label>
@@ -28,8 +30,7 @@
           <input type="submit" name="anadirProvedor" id="anadirProvedor" value="Enviar" >
           <input type="reset" name="reset" id="reset" value="Restablecer" >
       </form>
-    </section>
-  </main>
-</div>
+    </div>
+  </div>
 </body>
 </html>
