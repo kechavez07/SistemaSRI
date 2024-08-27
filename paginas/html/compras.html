@@ -1,47 +1,49 @@
 <!doctype html>
 <html>
 <head>
+  <link href="../css/estilosGenerales.css" type="text/css" rel="stylesheet">
 <meta charset="utf-8">
-<title>Documento sin título</title>
+<title>Compr</title>
 </head>
 
 <body>
-<div>
-	<h1>Detalle de Entrega Pedido</h1>
-    <form method="post">
+  <div class="container">
+    <nav class="sidebar">
+      <p>&nbsp;</p>
+    </nav> 
+    <main class="content">
+      <section class="form-section">
+	<h1 class="center">Detalle de Entrega Pedido</h1>
+  <p>&nbsp;</p>  
+  <form method="post" action="../php/anadir.php">
       <p>
-        Bodeguero
-          <label for="bodeguero">:</label>
+          <label for="bodeguero">Bodeguero:</label>
         <input type="text" name="bodeguero" id="bodeguero" readonly>
-      Fecha
-        <label for="fechaHoraActual">:</label>
-        <input type="text" name="fechaHoraActual" id="fechaHoraActual" readonly>
+        <label for="fechaHoraActual">Fecha:</label>
+        <input type="date" name="fechaHoraActual" id="fechaHoraActual" readonly>
       </p>
-      <p>Proveedor
-  <label for="proveedor">:</label>
+      <p>
+  <label for="proveedor">Proveedor:</label>
         <input type="text" name="proveedor" id="proveedor">
       </p>
       <p>
-        Repartidor
-          <label for="repartidor">:</label>
+          <label for="repartidor">Repartidor:</label>
         <input type="text" name="repartidor" id="repartidor">
-        Cédula
-        <label for="cedula">:</label>
+        
+        <label for="cedula">Cédula:</label>
         <input type="text" name="cedula" id="cedula">
       </p>
       <p>
-        Producto
-        <label for="producto">:</label>
+        
+        <label for="producto">Producto:</label>
         <input type="text" name="producto" id="producto">
       </p>
       <p>
-       Cantidad
-         <label for="number">:</label>
+         <label for="number">Cantidad:</label>
         <input type="number" name="number" id="number">
       </p>
       <p>
-        Observaciones
-          <label for="observacion">:</label>
+          <label for="observacion">Observaciones:</label>
         <input type="text" name="observacion" id="observacion">
       </p>
       <p>
@@ -60,10 +62,12 @@
       </table>
       <p>&nbsp;</p>
       <p>
-        <input type="submit" name="submit" id="submit" value="Enviar">
+        <input type="submit" name="anadirCompras" id="anadirCompras" value="Enviar">
         <input type="reset" name="reset" id="reset" value="Restablecer">
       </p>
-    </form>    
+    </form>  
+  </section>
+</main>  
 </div>
 </body>
 </html>

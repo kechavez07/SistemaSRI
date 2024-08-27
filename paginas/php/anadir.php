@@ -23,8 +23,6 @@ if(isset($_POST['anadir'])) {
 
 }
 //Ingreso datos de proveedor
-include("db.php");
-
 if(isset($_POST['anadirProvedor'])) {
     $nombreEmpresa = $_POST['nombreEmpresa'];
     $direccion = $_POST['direccion'];
@@ -60,6 +58,24 @@ if(isset($_POST['anadirProducto'])) {
     else {
         echo "<script>alert('Producto registrado con éxito');</script>";
         echo "<script>window.location.href = '../html/añadirProducto.html';</script>";
+    }
+}
+//Añadir Compras
+if(isset($_POST['anadirCompras'])) {
+    $nombreEmpresa = $_POST['nombreEmpresa'];
+    $direccion = $_POST['direccion'];
+    $telefono = $_POST['telefono'];   
+    $email = $_POST['email'];
+    $servicios = $_POST['servicios'];
+
+    $query = "INSERT INTO proveedor (IDPROVEEDOR, NOMBREEMPRESA, DIRECCION, TELEFONO, EMAIL, SERVICIOS) VALUES (NULL, '$nombreEmpresa', '$direccion', '$telefono', '$email', '$servicios')";
+
+    // Ejecutar la consulta y comprobar si se ejecutó correctamente
+    if (!mysqli_query($conn, $query)) {
+        echo "Error en la grabación: " . mysqli_error($conn);
+    } else {
+        echo "<script>alert('Proveedor registrado con éxito');</script>";
+        echo "<script>window.location.href = '../html/añadirProveedor.html';</script>";
     }
 }
 ?>
