@@ -51,7 +51,46 @@ $(document).ready(function() {
 });
 
 $('#ingresar').click(function() { 
-    
+    var usuario = JSON.parse(localStorage.getItem("usuario"));
+    var bodeguero = usuario.id;
+    var proveedor = $('#listProveedor').val();
+    var fechaHora = $('#fechaHoraActual').val();
+    var total = $('#total').val();
+    var productos = JSON.parse(localStorage.getItem("productos"));
+
+    if (productos.length == 0) {
+        alert("No hay productos en la lista");
+        return;
+    }
+
+    var productosJson = JSON.stringify(productos);
+
+    $.ajax({
+        url: '../php/compras.php',
+        type: 'POST',
+        data: {
+            accion: 'ingresar',
+            bodeguero: bodeguero,
+            proveedor: proveedor,
+            fechaHora: fechaHora,
+            total: total,
+            productos: productosJson
+        },
+        success: function(response) {
+            console.log(response);
+            if (response == 1) {
+                alert("Compra ingresada correctamente");
+                localStorage.removeItem("productos");
+                window.location.href = "compras.html";
+            } else {
+                alert("Error al ingresar la compra");
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error("Error en la solicitud AJAX: ", textStatus, errorThrown);
+            alert("Error al ingresar la compra");
+        }
+    });
 
 
 

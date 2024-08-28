@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link type="text/css" href="../css/estilosGenerales.css" rel="stylesheet">
+<title>Registrar Rol</title>
+</head>
+
+<body>
+	<div class="container">
+		<nav class="sidebar">
+		  <p>&nbsp;</p>
+		</nav> 
+		<main class="content">
+		  <section class="form-section">
+		    <h1 class="center">Registrar Rol</h1>
+			  <form id="form1" name="form1" method="post" action="../php/anadir.php">
+				<p>
+					<label for="admin">Adminstardor:</label>
+					<input type="text" name="admin" id="admin" readonly>
+					<label for="fechaHoraActual">Fecha:</label>
+					<input type="datetime" name="fechaHoraActual" id="fechaHoraActual" readonly>
+				  </p>
+			    <p>
+			      <label for="nombreRol">Nombre:</label>
+			      <input type="text" name="nombreRol" id="nombreRol">
+			    </p>
+			    <p>
+			      <label for="permiso">Permiso:</label>
+                  <input type="text" name="permiso" id="permiso">
+			    </p>
+				  <input type="button" value="Ingresar Permiso">
+			    <table width="200" border="1">
+			      <tbody>
+			        <tr>
+			          <td width="33%">Nombre del Rol</td>
+			          <td width="33%">Permisos</td>
+			          <td width="33%">Acciones</td>
+		            </tr>
+		          </tbody>
+		        </table>
+			    <p>
+			      <input type="submit" name="submit" id="submit" value="Enviar">
+			    </p>
+			    <p>
+			      <input type="reset" name="reset" id="reset" value="Restablecer">
+                </p>
+				
+			  </form>
+		</section>
+		</main>
+	</div>
+</body>
+</html>

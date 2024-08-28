@@ -14,7 +14,13 @@
 		<main class="content">
 		  <section class="form-section">
 	<h1 class="center">Registro Cliente</h1>
-	<form>
+	<form id="form1" name="form1" method="post" action="../php/anadir.php">
+		<p>
+            <label for="vendedor">Vendedor:</label>
+            <input type="text" name="vendedor" id="vendedor" readonly>
+            <label for="fechaHoraActual">Fecha:</label>
+            <input type="datetime" name="fechaHoraActual" id="fechaHoraActual" readonly>
+          </p>
 	  <p>
 	    <label for="cedula">Cédula:</label>
 	    <input type="text" name="cedula" id="cedula" placeholder="1782132123">
