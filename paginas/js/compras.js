@@ -19,6 +19,34 @@ $(document).ready(function() {
 
 
     loadProveedores();
+    loadProductos();
+
+    function loadProductos() {
+        $.ajax({
+            url: '../php/compras.php', // Archivo PHP que devolverá los datos
+            type: 'POST',
+            data: {
+                accion: 'productos'   
+            },
+            success: function(response) {
+                var data = JSON.parse(response);
+                
+                if (Array.isArray(data) && data.length > 0) {
+                    data.forEach(item => {
+                        const opcion = document.createElement('option');
+                        opcion.value = item.nombreProducto;
+                        $('#listProducto').append(opcion);
+                    });
+                } else {
+                    $('#listProducto').append('<p>No hay proveedores disponibles.</p>');
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error("Error en la solicitud AJAX: ", textStatus, errorThrown);
+                alert("Error al cargar las categorías");
+            }
+        });
+    }
 
     function loadProveedores() {
         $.ajax({
@@ -47,6 +75,7 @@ $(document).ready(function() {
         });
     }
     
+
 
 });
 
