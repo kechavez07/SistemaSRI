@@ -59,7 +59,7 @@ input[type="button"]{
     border-radius: 5px;
     font-size: 16px;
 }
-#bodeguero,#nombreVendedor{
+#bodeguero,#vendedor,#admin{
     margin-right: 15%;
     width: 25%;
     padding: 10px;
