@@ -15,9 +15,10 @@ $(document).ready(function() {
                 // Parsear la respuesta como JSON
                 var jsonResponse = JSON.parse(response);
 
-                if(jsonResponse.status === "success") {
+                if(jsonResponse.cedula === username) {
                     var idUsuario = jsonResponse.idUsuario;
                     localStorage.setItem("idUsuario", idUsuario);
+                    localStorage.setItem("usuario",JSON.stringify(jsonResponse));
                     window.location.href = "paginas/html/inicio.html";
                 } else {
                     alert("Nombre de usuario o contraseña incorrectos");
