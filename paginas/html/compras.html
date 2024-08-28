@@ -3,12 +3,12 @@
 <head>
   <link href="../css/estilosGenerales.css" type="text/css" rel="stylesheet">
 <meta charset="utf-8">
-<title>Compr</title>
+<title>Compra</title>
 </head>
 
 <body>
   <div class="container">
-    <nav class="sidebar">
+    <nav class="sidebar card-container" id="card-container">
       <p>&nbsp;</p>
     </nav> 
     <main class="content">
@@ -20,12 +20,15 @@
           <label for="bodeguero">Bodeguero:</label>
         <input type="text" name="bodeguero" id="bodeguero" readonly>
         <label for="fechaHoraActual">Fecha:</label>
-        <input type="date" name="fechaHoraActual" id="fechaHoraActual" readonly>
+        <input type="datetime" name="fechaHoraActual" id="fechaHoraActual" readonly>
       </p>
       <p>
   <label for="proveedor">Proveedor:</label>
-        <input type="text" name="proveedor" id="proveedor">
+        <input type="text" name="proveedor" id="proveedor" list="listProveedor">
       </p>
+      <datalist id="listProveedor">  
+
+      </datalist>
       <p>
           <label for="repartidor">Repartidor:</label>
         <input type="text" name="repartidor" id="repartidor">
@@ -69,5 +72,8 @@
   </section>
 </main>  
 </div>
+  <script src="../../configuraciones/jquery-1.12.4.js"></script>
+    <script src="../js/app.js"></script>
+  <script src="../js/compras.js"></script>
 </body>
 </html>
