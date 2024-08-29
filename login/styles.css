@@ -1,10 +1,9 @@
 /* Variables */
 :root {
-    --background: hsl(210, 100%, 97%);
+    --background: #ffff;
     --foreground: hsl(339, 20%, 20%);
-    --primary: hsl(308, 56%, 85%);
     --muted-foreground: hsl(210, 22%, 22%);
-    --card: hsl(210, 100%, 97%);
+    --card: hsl(320, 100%, 89%);
     --border: hsl(210, 40%, 80%);
     --radius: 1rem;
 }
@@ -14,7 +13,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Manrope', sans-serif;
-    background-color: var(--background);
+    background-image:url("../img/fondoLogin3.jpg");
     color: var(--foreground);
     display: flex;
     justify-content: center;
@@ -32,13 +31,13 @@ body {
 
 /* Login Wrapper */
 .login-wrapper {
-    max-width: 400px;
+    max-width: 500px;
     width: 100%;
 }
 
 /* Card */
 .card {
-    background-color: var(--card);
+    background-color: white;
     border-radius: var(--radius);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -54,10 +53,10 @@ body {
 
 input[type="text"],
 input[type="password"] {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin-top: 5px;
-    border: 1px solid var(--border);
+    border: 1px solid #b9b6b8;
     border-radius: var(--radius);
     font-size: 16px;
 }
@@ -70,7 +69,7 @@ input[type="password"] {
 .btn {
     width: 100%;
     padding: 10px;
-    background-color: var(--primary);
+    background-color: #F28FB6;
     border: none;
     border-radius: var(--radius);
     color: #fff;
@@ -79,12 +78,15 @@ input[type="password"] {
 }
 
 .btn:hover {
-    background-color: darken(var(--primary), 10%);
+    background-color:  #B25068;
 }
 
 /* Text Center */
 .text-center {
     text-align: center;
+    background-color: white;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .title {
@@ -97,13 +99,4 @@ input[type="password"] {
     color: var(--muted-foreground);
 }
 
-.forgot-password {
-    display: inline-block;
-    margin-top: 15px;
-    color: var(--primary);
-    text-decoration: none;
-}
 
-.forgot-password:hover {
-    text-decoration: underline;
-}
