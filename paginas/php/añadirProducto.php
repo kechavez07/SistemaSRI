@@ -36,8 +36,9 @@ if ($action == 'productos') {
     $categoria = $_POST['categoria'];
     $descripcion = $_POST['descripcion'];
     $precio = $_POST['precio'];
-    
-    $query = "INSERT INTO producto( IDPRODUCTO,CODIGO, NOMBREPRODUCTO, IDCATEGORI, DESCRIPCION, PRECIO) VALUES ('$producto', $codigo,'$categoria', '$descripcion', '$precio')";
+    $query = "SELECT MAX(IDENTREGA) AS IDCATEGORI FROM categoria where $categoria=CATEGORIA ";
+
+    $query = "INSERT INTO producto(CODIGO, NOMBREPRODUCTO, IDCATEGORI, DESCRIPCION, PRECIO) VALUES ('$codigo', '$producto' ,'$categoria', '$descripcion', '$precio')";
     $result = $conn->query($query);
     if (!$result) {
         echo json_encode(['error' => 'Error al insertar entrega: ' . $conn->error]);
