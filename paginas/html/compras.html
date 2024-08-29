@@ -2,7 +2,7 @@
 <html>
 <head>
   <link href="../css/estilosGenerales.css" type="text/css" rel="stylesheet">
-<meta charset="utf-8">
+  <meta charset="utf-8">
 <title>Compra</title>
 </head>
 
@@ -15,7 +15,7 @@
       <section class="form-section">
 	<h1 class="center">Detalle de Entrega Pedido</h1>
   <p>&nbsp;</p>  
-  <form method="post" action="../php/anadir.php">
+  <form method="#" onsubmit="guardar();return false">
       <p>
           <label for="bodeguero">Bodeguero:</label>
         <input type="text" name="bodeguero" id="bodeguero" readonly>
@@ -44,8 +44,8 @@
       <datalist id="listProducto">
       </datalist>
       <p>
-         <label for="number">Cantidad:</label>
-        <input type="number" name="number" id="number">
+         <label for="producto">Cantidad:</label>
+        <input type="number" name="cantidad" id="cantidad">
       </p>
       <p>
           <label for="observacion">Observaciones:</label>
@@ -54,7 +54,7 @@
       <p>
         <input type="button" name="button" id="ingresar" value="Ingresar Producto">
       </p>
-      <table width="200" border="1">
+      <table width="200" border="1" id="tablaProductos">
         <tbody>
           <tr>
             <td>Código</td>

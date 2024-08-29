@@ -13,7 +13,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $idUsuario = $row['IDROL'];
-    echo json_encode([ 'idUsuario' => $idUsuario,'cedula'=> $row['CEDULA'], 'nombre' => $row['NOMBREU'], 'apellido' => $row['APELLIDOU'], 'correo' => $row['CORREO'],'estado' => $row['ESTADO']]);
+    echo json_encode([ 'idUsuario' => $idUsuario,'id' => $row['IDUSUARIO'],'cedula'=> $row['CEDULA'], 'nombre' => $row['NOMBREU'], 'apellido' => $row['APELLIDOU'], 'correo' => $row['CORREO'],'estado' => $row['ESTADO']]);
 } else {
     echo json_encode(['status' => 'error']);
 }
