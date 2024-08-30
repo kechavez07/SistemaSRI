@@ -5,6 +5,14 @@
   <meta charset="utf-8">
 <title>Compra</title>
 </head>
+<style>
+  .error{
+    color: red;
+  }
+  .bien{
+    color: green;   
+  }
+</style>
 
 <body>
   <div class="container">
@@ -23,18 +31,22 @@
         <input type="datetime" name="fechaHoraActual" id="fechaHoraActual" readonly>
       </p>
       <p>
-  <label for="proveedor">Proveedor:</label>
+        <label for="proveedor">Proveedor:</label>
         <input type="text" name="proveedor" id="proveedor" list="listProveedor">
       </p>
       <datalist id="listProveedor">  
 
       </datalist>
       <p>
-          <label for="repartidor">Repartidor:</label>
+        <label for="repartidor">Repartidor:
         <input type="text" name="repartidor" id="repartidor">
-        
-        <label for="cedula">Cédula:</label>
+        <samp></samp>
+        </label>
+        <br>
+        <label for="cedula">Cédula:
         <input type="text" name="cedula" id="cedula">
+        <samp></samp>
+      </label>
       </p>
       <p>
         
@@ -68,7 +80,7 @@
       <p>&nbsp;</p>
       <p>
         <input type="submit" name="anadirCompras" id="anadirCompras" value="Enviar">
-        <input type="reset" name="reset" id="reset" value="Restablecer">
+        <input type="button" name="reset" id="reset" value="Restablecer">
       </p>
     </form>  
   </section>

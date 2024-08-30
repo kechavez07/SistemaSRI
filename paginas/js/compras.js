@@ -96,8 +96,6 @@ $(document).on('ready',function(event) {
         });
     }
 
-
-
 });
 
 
@@ -119,9 +117,12 @@ function guardar(){
                     console.log('Error al enviar los productos');
                 }
                 console.log('Productos enviados correctamente');
+                alert('Compra realizada con éxito');
+            limpiar();
                 
             }
         });
+        
 }
 
 
@@ -162,4 +163,65 @@ document.getElementById('proveedor').addEventListener('input', function() {
     } else {
       proveedorID = null;
     }
-  });
+    
+    
+});
+
+document.getElementById('reset').addEventListener('click', limpiar);
+
+document.getElementById('repartidor').addEventListener('blur', function() {
+    repartidorInput = document.getElementById('repartidor').value;
+    const errorSpan =  document.getElementById('repartidor').nextElementSibling;
+
+    if (repartidorInput == 0) {
+        errorSpan.innerText = 'El campo no puede estar vacío';
+        errorSpan.classList.add('error');
+    }
+    if (/\d/.test(repartidorInput)) {
+        errorSpan.textContent = 'El campo no puede contener números';
+        errorSpan.classList.add('error');
+    } else {
+        errorSpan.textContent = '';
+        errorSpan.classList.remove('error');
+        errorSpan.classList.add('bien');
+    }
+
+
+});
+
+document.getElementById('cedula').addEventListener('blur', function() {
+    cedulaInput = document.getElementById('cedula').value;
+    const errorSpan =  document.getElementById('cedula').nextElementSibling;
+
+    if (cedulaInput == 0) {
+        errorSpan.innerText = 'El campo no puede estar vacío';
+        errorSpan.classList.add('error');
+    }
+    if (!/\d/.test(cedulaInput)) {
+        errorSpan.textContent = 'El campo debe contener solo números';
+        errorSpan.classList.add('error');
+    }
+    if (cedulaInput.length != 10) {
+        errorSpan.textContent = 'El campo debe contener 10 dígitos';
+        errorSpan.classList.add('error');
+    } else {
+        errorSpan.textContent = '';
+        errorSpan.classList.remove('error');
+        errorSpan.classList.add('bien');
+    }
+});
+
+function limpiar() {
+    listaProductos = [];
+    var table = document.getElementById('tablaProductos');
+    var rowCount = table.rows.length;
+    for (var i = rowCount - 1; i > 0; i--) {
+        table.deleteRow(i);
+    }
+    document.getElementById('producto').value = '';
+    document.getElementById('cantidad').value = '';
+    document.getElementById('observacion').value = '';
+    document.getElementById('repartidor').value = '';
+    document.getElementById('cedula').value = '';
+    document.getElementById('proveedor').value = '';
+}
