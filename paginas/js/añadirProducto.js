@@ -60,3 +60,26 @@ $(document).ready(function() {
         $('#busCategoria').val(categoria);
     });
 });
+
+function guardar(){
+    console.log('Enviando Producto:', listaProductos);
+    $.ajax({
+        url: '../php/compras.php',
+        type: 'POST',
+        data: {
+            accion: 'compras',
+            bodeguero: usuario.id,
+            fechaHora: document.getElementById('fechaHoraActual').value,
+            proveedor: proveedorID,
+            repartidor: document.getElementById('repartidor').value + " " + document.getElementById('cedula').value,
+            productos: JSON.stringify(listaProductos), 
+        },
+        success: function(response) {
+            if(response == 'error'){
+                console.log('Error al enviar los productos');
+            }
+            console.log('Productos enviados correctamente');
+            
+        }
+    });
+}

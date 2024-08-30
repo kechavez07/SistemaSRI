@@ -29,5 +29,29 @@ if ($action == 'categoria') {
     $conn->close();
 }
 
+if ($action == 'productos') {
+    
+    $codigo = $_POST['codigo'];
+    $producto = $_POST['producto'];
+    $categoria = $_POST['categoria'];
+    $descripcion = $_POST['descripcion'];
+    $precio = $_POST['precio'];
+    
+    $query = "INSERT INTO producto( IDPRODUCTO,CODIGO, NOMBREPRODUCTO, IDCATEGORI, DESCRIPCION, PRECIO) VALUES ('$producto', $codigo,'$categoria', '$descripcion', '$precio')";
+    $result = $conn->query($query);
+    if (!$result) {
+        echo json_encode(['error' => 'Error al insertar entrega: ' . $conn->error]);
+    } else {
+        $query = "SELECT MAX(IDENTREGA) AS ID FROM entrega";
+        $result = $conn->query($query);
+        if (!$result) {
+            die('Error en la consulta: ' . $conn->error);
+        } else {
+            echo json_encode(['success' => 'Productos enviados correctamente']);
+        }
+    }
+    
+} 
+
 ?>
 
